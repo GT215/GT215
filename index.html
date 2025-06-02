@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>YOLOv5 偵測統計儀表板</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .stat-box { margin-bottom: 20px; }
+        .stat-box h2 { color: #333; }
+        table { border-collapse: collapse; width: 300px; }
+        th, td { border: 1px solid #999; padding: 8px; text-align: left; }
+    </style>
+</head>
+<body>
+    <h1>🎯 YOLOv5 物件偵測儀表板</h1>
+    <div class="stat-box">
+        <h2>統計結果：</h2>
+        <table>
+            <tr><th>類別</th><th>數量</th></tr>
+            {% for cls, count in stats.items() %}
+            <tr><td>{{ cls }}</td><td>{{ count }}</td></tr>
+            {% endfor %}
+        </table>
+    </div>
+    <div>
+        <h2>🔍 即時畫面：</h2>
+        <img src="{{ url_for('video_feed') }}" width="640">
+    </div>
+</body>
+</html>
